@@ -6,7 +6,6 @@ Student Number: 041145316
 Section: 010
 Professor: Stanley Pieda
 
-
 File Description:
 This file contains the Persistence Layer of the application.
 It is responsible for reading records from a CSV dataset,
@@ -25,9 +24,24 @@ import csv
 import uuid
 from model.record import Record
 
+
 class FileHandler:
+    """
+    Handles file input and output operations for CSV data.
+    Responsible for loading dataset into memory and saving records
+    back to a new CSV file.
+    """
 
     def load_file(self, filename):
+        """
+        Loads records from a CSV file into memory.
+
+        Parameters:
+            filename (str): Path to the input CSV file.
+
+        Returns:
+            list: A list of Record objects loaded from the file.
+        """
         records = []
 
         try:
@@ -43,15 +57,15 @@ class FileHandler:
                         first = False
                         continue
 
-                    # skip empty rows (IMPORTANT FIX)
+                    # skip empty rows
                     if not row:
                         continue
 
-                    # limit 100 records
+                    # limit to 100 records
                     if len(records) >= 100:
                         break
 
-                    # safer mapping (works for full dataset rows)
+                    # convert row to Record object
                     record = Record(*row)
                     records.append(record)
 
@@ -63,9 +77,16 @@ class FileHandler:
 
         return records
 
-
     def save_file(self, records):
+        """
+        Saves in-memory records to a new CSV file using a UUID filename.
 
+        Parameters:
+            records (list): List of Record objects to save.
+
+        Returns:
+            None
+        """
         filename = str(uuid.uuid4()) + ".csv"
 
         try:

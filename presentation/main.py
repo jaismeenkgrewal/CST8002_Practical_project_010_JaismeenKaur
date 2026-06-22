@@ -1,4 +1,3 @@
-
 """
 Course: CST8002 - Programming Language Research
 Assignment: Practical Project 2
@@ -7,12 +6,11 @@ Student Number: 041145316
 Section: 010
 Professor: Stanley Pieda
 
-
 File Description:
 This file contains the Presentation Layer of the application.
 It provides a console-based user interface that allows users
-to load, display, add, update, delete, save, and reload records.
-All user interactions are handled through this file.
+to interact with the system. Users can display, add, update,
+delete, save, and reload dataset records.
 
 References:
 [1] Python CSV Documentation - https://docs.python.org/3/library/csv.html
@@ -22,8 +20,6 @@ References:
 [5] Government of Canada Open Data Portal - https://open.canada.ca
 """
 
-
-
 from persistence.file_handler import FileHandler
 from business.record_service import RecordService
 from model.record import Record
@@ -31,8 +27,13 @@ import os
 
 
 def main():
+    """
+    Entry point of the application.
+    Handles user interaction and connects Presentation,
+    Business, and Persistence layers.
+    """
 
-    print("Program by JAISMEEN KAUR")  
+    print("Program by JAISMEEN KAUR")
 
     # =========================
     # SAFE FILE PATH SETUP
@@ -71,7 +72,7 @@ def main():
         choice = input("Enter choice: ")
 
         # =========================
-        # DISPLAY
+        # DISPLAY RECORDS
         # =========================
         if choice == "1":
             print("\n--- RECORDS ---")
@@ -79,55 +80,55 @@ def main():
                 print(i, r)
 
         # =========================
-        # ADD
+        # ADD RECORD
         # =========================
         elif choice == "2":
             col1 = input("Enter col1: ")
             col2 = input("Enter col2: ")
             service.add(Record(col1, col2))
-            print("Record added.")
+            print("Record added successfully.")
 
         # =========================
-        # UPDATE
+        # UPDATE RECORD
         # =========================
         elif choice == "3":
             index = int(input("Enter index to update: "))
             col1 = input("New col1: ")
             col2 = input("New col2: ")
             service.update(index, Record(col1, col2))
-            print("Record updated.")
+            print("Record updated successfully.")
 
         # =========================
-        # DELETE
+        # DELETE RECORD
         # =========================
         elif choice == "4":
             index = int(input("Enter index to delete: "))
             service.delete(index)
-            print("Record deleted.")
+            print("Record deleted successfully.")
 
         # =========================
-        # SAVE (UUID FILE)
+        # SAVE DATA (UUID FILE)
         # =========================
         elif choice == "5":
             file_handler.save_file(service.get_all())
 
         # =========================
-        # RELOAD
+        # RELOAD DATA
         # =========================
         elif choice == "6":
             records = file_handler.load_file(FILE_PATH)
             service.reload(records)
-            print("Data reloaded.")
+            print("Data reloaded successfully.")
 
         # =========================
-        # EXIT
+        # EXIT APPLICATION
         # =========================
         elif choice == "0":
             print("Exiting program...")
             break
 
         else:
-            print("Invalid option!")
+            print("Invalid option! Please try again.")
 
 
 if __name__ == "__main__":

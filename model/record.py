@@ -6,7 +6,6 @@ Student Number: 041145316
 Section: 010
 Professor: Stanley Pieda
 
-
 File Description:
 This file contains the Record model class.
 The Record class represents a single row from the dataset
@@ -23,11 +22,27 @@ References:
 """
 
 class Record:
+    """
+    Represents a single dataset record.
+    Stores all column values from one row of the CSV file.
+    """
 
     def __init__(self, *columns):
+        """
+        Initializes a Record object with dynamic column values.
+
+        Parameters:
+            *columns: Variable length argument list representing dataset fields.
+        """
         self.columns = list(columns)
 
     def __str__(self):
+        """
+        Returns a readable string representation of the record.
+
+        Returns:
+            str: Pipe-separated string of column values.
+        """
         return " | ".join(
             str(c) if c not in ["", None] else "NA"
             for c in self.columns
