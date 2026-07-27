@@ -121,7 +121,7 @@ class RecordService:
             list: Records sorted alphabetically by SiteName.
         """
         self.records.sort(
-            key=lambda record: record.SiteName.lower()
+            key=lambda record: str(record.columns[0]).lower()
         )
 
         return self.records
