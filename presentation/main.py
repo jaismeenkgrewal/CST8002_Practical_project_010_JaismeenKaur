@@ -4,7 +4,7 @@ Assignment: Practical Project 3
 Student Name: Jaismeen Kaur
 Student Number: 041145316
 Section: 010
-Professor: Stanley Pieda
+Professor: Daniel Cormier
 
 File Description:
 This file contains the Presentation Layer of the application.

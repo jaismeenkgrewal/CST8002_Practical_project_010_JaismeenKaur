@@ -4,7 +4,7 @@ Assignment: Practical Project 3
 Student Name: Jaismeen Kaur
 Student Number: 041145316
 Section: 010
-Professor: Stanley Pieda
+Professor: Daniel Cormier
 
 File Description:
 This file contains the Business Layer of the application.
@@ -14,22 +14,21 @@ deleting, reloading, and sorting records by SiteName.
 
 References:
 [1] Python Software Foundation, "Sorting Techniques,"
-    Python Documentation. [Online]. Available:
-    https://docs.python.org/3/howto/sorting.html
+Python Documentation. [Online]. Available:
+[https://docs.python.org/3/howto/sorting.html](https://docs.python.org/3/howto/sorting.html)
 
 [2] Python CSV Documentation.
-    https://docs.python.org/3/library/csv.html
+[https://docs.python.org/3/library/csv.html](https://docs.python.org/3/library/csv.html)
 
 [3] Python UUID Documentation.
-    https://docs.python.org/3/library/uuid.html
+[https://docs.python.org/3/library/uuid.html](https://docs.python.org/3/library/uuid.html)
 
 [4] Python Unittest Documentation.
-    https://docs.python.org/3/library/unittest.html
+[https://docs.python.org/3/library/unittest.html](https://docs.python.org/3/library/unittest.html)
 
 [5] Government of Canada Open Data Portal.
-    https://open.canada.ca
+[https://open.canada.ca](https://open.canada.ca)
 """
-
 
 class RecordService:
     """
@@ -125,3 +124,31 @@ class RecordService:
         )
 
         return self.records
+
+    def get_chart_data(self, number_of_records):
+        """
+        Prepare SiteName and THg values for the vertical bar chart.
+
+        Parameters:
+            number_of_records (int): Number of records to include.
+
+        Returns:
+            tuple: SiteName values and THg values.
+        """
+        site_names = []
+        thg_values = []
+
+        selected_records = self.records[:number_of_records]
+
+        for record in selected_records:
+            try:
+                site_name = str(record.columns[0])
+                thg_value = float(record.columns[6])
+
+                site_names.append(site_name)
+                thg_values.append(thg_value)
+
+            except (ValueError, TypeError, IndexError):
+                continue
+
+        return site_names, thg_values
