@@ -12,22 +12,14 @@ It reads the actual tabular records from the CSV dataset,
 creates Record objects, and saves records to a new CSV file
 using a UUID-generated filename.
 
-References:
-[1] Python Software Foundation, "csv — CSV File Reading and Writing,"
-    Python Documentation. [Online]. Available:
-    https://docs.python.org/3/library/csv.html
+References
 
-[2] Python Software Foundation, "uuid — UUID Objects,"
-    Python Documentation. [Online]. Available:
-    https://docs.python.org/3/library/uuid.html
+[1] 	Matplotlib Development Team, "Matplotlib documentation.," Matplotlib, [Online]. Available: https://matplotlib.org/stable/. [Accessed 9 august 2026].
+[2] 	Matplotlib Development Team, "Bar(x, height)," Matplotlib, [Online]. Available: https://matplotlib.org/stable/plot_types/basic/bar.html. [Accessed 9 Aug 2026].
+[3] 	Python Software Foundation, "Errors and Exceptions," Python Software Foundation, [Online]. Available: https://docs.python.org/3/tutorial/errors.html. [Accessed 9 Aug 2026].
 
-[3] Python Software Foundation, "Python Documentation."
-    [Online]. Available:
-    https://docs.python.org/3/
 
-[4] Government of Canada, "Open Data Portal."
-    [Online]. Available:
-    https://open.canada.ca
+
 """
 
 import csv

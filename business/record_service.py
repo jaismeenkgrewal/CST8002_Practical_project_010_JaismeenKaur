@@ -12,23 +12,16 @@ It manages the in-memory collection of records and performs
 CRUD operations including creating, reading, updating,
 deleting, reloading, and sorting records by SiteName.
 
-References:
-[1] Python Software Foundation, "Sorting Techniques,"
-Python Documentation. [Online]. Available:
-[https://docs.python.org/3/howto/sorting.html](https://docs.python.org/3/howto/sorting.html)
+References
 
-[2] Python CSV Documentation.
-[https://docs.python.org/3/library/csv.html](https://docs.python.org/3/library/csv.html)
+[1] 	Matplotlib Development Team, "Matplotlib documentation.," Matplotlib, [Online]. Available: https://matplotlib.org/stable/. [Accessed 9 august 2026].
+[2] 	Matplotlib Development Team, "Bar(x, height)," Matplotlib, [Online]. Available: https://matplotlib.org/stable/plot_types/basic/bar.html. [Accessed 9 Aug 2026].
+[3] 	Python Software Foundation, "Errors and Exceptions," Python Software Foundation, [Online]. Available: https://docs.python.org/3/tutorial/errors.html. [Accessed 9 Aug 2026].
 
-[3] Python UUID Documentation.
-[https://docs.python.org/3/library/uuid.html](https://docs.python.org/3/library/uuid.html)
 
-[4] Python Unittest Documentation.
-[https://docs.python.org/3/library/unittest.html](https://docs.python.org/3/library/unittest.html)
 
-[5] Government of Canada Open Data Portal.
-[https://open.canada.ca](https://open.canada.ca)
 """
+
 
 class RecordService:
     """
@@ -130,7 +123,7 @@ class RecordService:
         Prepare SiteName and THg values for the vertical bar chart.
 
         Parameters:
-            number_of_records (int): Number of records to include.
+            number_of_records (int): Number of valid records to include.
 
         Returns:
             tuple: SiteName values and THg values.
@@ -138,15 +131,21 @@ class RecordService:
         site_names = []
         thg_values = []
 
-        selected_records = self.records[:number_of_records]
+        count = 1
 
-        for record in selected_records:
+        for record in self.records:
             try:
                 site_name = str(record.columns[0])
                 thg_value = float(record.columns[6])
 
-                site_names.append(site_name)
+                chart_label = f"{site_name}#{count}"
+
+                site_names.append(chart_label)
                 thg_values.append(thg_value)
+                count += 1
+
+                if len(site_names) == number_of_records:
+                    break
 
             except (ValueError, TypeError, IndexError):
                 continue

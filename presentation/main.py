@@ -12,25 +12,18 @@ It provides a console-based user interface that allows users
 to display, add, update, delete, save, reload, and sort
 dataset records.
 
-References:
-[1] Python Software Foundation, "Sorting Techniques,"
-    Python Documentation. [Online]. Available:
-    https://docs.python.org/3/howto/sorting.html
+References
 
-[2] Python CSV Documentation.
-    https://docs.python.org/3/library/csv.html
+[1] 	Matplotlib Development Team, "Matplotlib documentation.," Matplotlib, [Online]. Available: https://matplotlib.org/stable/. [Accessed 9 august 2026].
+[2] 	Matplotlib Development Team, "Bar(x, height)," Matplotlib, [Online]. Available: https://matplotlib.org/stable/plot_types/basic/bar.html. [Accessed 9 Aug 2026].
+[3] 	Python Software Foundation, "Errors and Exceptions," Python Software Foundation, [Online]. Available: https://docs.python.org/3/tutorial/errors.html. [Accessed 9 Aug 2026].
 
-[3] Python UUID Documentation.
-    https://docs.python.org/3/library/uuid.html
 
-[4] Python Unittest Documentation.
-    https://docs.python.org/3/library/unittest.html
 
-[5] Government of Canada Open Data Portal.
-    https://open.canada.ca
 """
 
 import os
+import matplotlib.pyplot as plt
 
 from persistence.file_handler import FileHandler
 from business.record_service import RecordService
@@ -54,6 +47,7 @@ def display_menu():
     print("5. Save Records to UUID File")
     print("6. Reload Original Dataset")
     print("7. Sort Records by SiteName")
+    print("8. Display vertical Bar Chart")
     print("0. Exit")
     print("============================================")
 
@@ -205,6 +199,42 @@ def main():
                 print(index, record)
 
         # =========================
+        # DISPLAY VERTICAL BAR CHART
+        # =========================
+        elif choice == "8":
+
+            print("\n--- VERTICAL BAR CHART ---")
+            print("Program by JAISMEEN KAUR")
+
+            try:
+                number = int(
+                    input(
+                        "How many records would you like to display in the chart? "
+                    )
+                )
+
+                site_names, thg_values = service.get_chart_data(number)
+
+                if len(site_names) == 0:
+                    print("No valid data available for the chart.")
+                else:
+                    plt.figure(figsize=(10, 6))
+
+                    plt.bar(site_names, thg_values)
+
+                    plt.title("THg Concentration by Site")
+                    plt.xlabel("Site Name")
+                    plt.ylabel("THg")
+
+                    plt.xticks(rotation=45, ha="right")
+                    plt.tight_layout()
+
+                    plt.show()
+
+            except ValueError:
+                print("Please enter a valid whole number.")
+
+        # =========================
         # EXIT APPLICATION
         # =========================
         elif choice == "0":
@@ -218,7 +248,7 @@ def main():
         # =========================
         else:
 
-            print("Invalid option. Please enter a number from 0 to 7.")
+            print("Invalid option. Please enter a number from 0 to 8.")
 
 
 if __name__ == "__main__":

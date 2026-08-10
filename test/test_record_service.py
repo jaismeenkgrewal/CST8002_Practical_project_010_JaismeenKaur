@@ -1,6 +1,6 @@
 """
 Course: CST8002 - Programming Language Research
-Assignment: Practical Project 3
+Assignment: Practical Project 4
 Student Name: Jaismeen Kaur
 Student Number: 041145316
 Section: 010
@@ -11,22 +11,14 @@ This file contains unit tests for the RecordService class.
 The tests use Python's unittest framework to verify that
 records can be added and sorted alphabetically by SiteName.
 
-References:
-[1] Python Software Foundation, "unittest — Unit Testing Framework,"
-    Python Documentation. [Online]. Available:
-    https://docs.python.org/3/library/unittest.html
+References
 
-[2] Python Software Foundation, "Sorting Techniques,"
-    Python Documentation. [Online]. Available:
-    https://docs.python.org/3/howto/sorting.html
+[1] 	Matplotlib Development Team, "Matplotlib documentation.," Matplotlib, [Online]. Available: https://matplotlib.org/stable/. [Accessed 9 august 2026].
+[2] 	Matplotlib Development Team, "Bar(x, height)," Matplotlib, [Online]. Available: https://matplotlib.org/stable/plot_types/basic/bar.html. [Accessed 9 Aug 2026].
+[3] 	Python Software Foundation, "Errors and Exceptions," Python Software Foundation, [Online]. Available: https://docs.python.org/3/tutorial/errors.html. [Accessed 9 Aug 2026].
 
-[3] Python Software Foundation, "Python Documentation."
-    [Online]. Available:
-    https://docs.python.org/3/
 
-[4] Government of Canada, "Open Data Portal."
-    [Online]. Available:
-    https://open.canada.ca
+
 """
 
 import unittest
